@@ -1,0 +1,494 @@
+
+/* ========================================
+   CarbonTrack - App.css
+   ======================================== */
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #173c2b;
+  background: #f4f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --green: #16a34a;
+  --green-dark: #166534;
+  --green-light: #e5f6e9;
+  --page-bg: #f4f8f4;
+  --text-dark: #173c2b;
+  --text-muted: #718078;
+  --border: #e1ebe3;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--page-bg);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ========================================
+   Dashboard and Reports Page
+   ======================================== */
+
+.dashboard-page {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--page-bg);
+  color: var(--text-dark);
+}
+
+/* Header: logo left, navigation button right */
+
+.dashboard-header {
+  width: 100%;
+  min-height: 96px;
+  padding: 18px 5.3%;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 20px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Existing footprint + CO2 logo component */
+
+.dashboard-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: var(--green-dark);
+  font-size: 25px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.dashboard-brand > * {
+  flex-shrink: 0;
+}
+
+/* Dashboard / Home navigation button */
+
+.dashboard-header .dashboard-back {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+  gap: 9px;
+  margin: 0 0 0 auto !important;
+  padding: 12px 20px;
+  min-height: 46px;
+  border: 1px solid #d4e8d9;
+  border-radius: 13px;
+  background: #ffffff;
+  color: var(--green-dark);
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+  position: static !important;
+  transform: none !important;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.dashboard-header .dashboard-back:hover {
+  background: var(--green-light);
+  border-color: #a7d9b4;
+}
+
+.dashboard-header .dashboard-back svg {
+  flex-shrink: 0;
+}
+
+/* Main page content */
+
+.dashboard-content {
+  width: min(1264px, 90%);
+  margin: 0 auto;
+  padding: 42px 0 60px;
+}
+
+.dashboard-eyebrow {
+  margin: 0 0 10px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.dashboard-content > h1 {
+  margin: 0 0 12px;
+  color: var(--text-dark);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.reports-description {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ========================================
+   Reports Buttons and Messages
+   ======================================== */
+
+.reports-refresh {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 15px;
+  border: 1px solid #cfe5d4;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--green-dark);
+  font-weight: 650;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.reports-refresh:hover:not(:disabled) {
+  background: var(--green-light);
+  border-color: #9dd3aa;
+}
+
+.reports-refresh-icon.spinning {
+  animation: reports-spin 1s linear infinite;
+}
+
+@keyframes reports-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reports-loading {
+  margin-top: 24px;
+  color: var(--text-muted);
+}
+
+.reports-error {
+  margin-top: 16px;
+  padding: 13px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fff1f2;
+  color: #b91c1c;
+  line-height: 1.6;
+}
+
+.reports-chart-description {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Dashboard Statistics Cards
+   ======================================== */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.dashboard-stat {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 5px 18px rgba(25, 70, 43, 0.035);
+}
+
+.dashboard-stat.main-stat {
+  border-color: #ccebd3;
+  background: linear-gradient(145deg, #f0fff3, #ffffff);
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 17px;
+  border-radius: 13px;
+  background: var(--green-light);
+  color: var(--green-dark);
+}
+
+.dashboard-stat > p {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dashboard-stat h2 {
+  margin: 0 0 12px;
+  color: var(--text-dark);
+  font-size: clamp(23px, 2.5vw, 31px);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-stat h2 span {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dashboard-stat small {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Charts and Analytics Panels
+   ======================================== */
+
+.dashboard-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.dashboard-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 5px 18px rgba(25, 70, 43, 0.035);
+}
+
+.dashboard-panel h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.dashboard-panel h2 svg {
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.chart-area {
+  width: 100%;
+  height: 290px;
+  min-width: 0;
+  margin-top: 20px;
+}
+
+.dashboard-note {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border: 1px solid #d6e9da;
+  border-radius: 12px;
+  background: #f0faf2;
+  color: #47634f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   General Dashboard Buttons
+   ======================================== */
+
+.dashboard-page button {
+  font-family: inherit;
+}
+
+.dashboard-page button:focus-visible,
+.dashboard-page a:focus-visible {
+  outline: 3px solid rgba(22, 163, 74, 0.35);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   Responsive Layout
+   ======================================== */
+
+@media (max-width: 900px) {
+  .dashboard-content {
+    width: 92%;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-header {
+    min-height: 78px;
+    padding: 14px 4%;
+    gap: 10px;
+  }
+
+  .dashboard-brand {
+    font-size: 19px;
+    gap: 6px;
+  }
+
+  .dashboard-brand svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dashboard-header .dashboard-back {
+    padding: 10px 12px;
+    min-height: 40px;
+    gap: 6px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .dashboard-content {
+    width: 92%;
+    padding: 30px 0 40px;
+  }
+
+  .dashboard-content > h1 {
+    font-size: 27px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .dashboard-stat,
+  .dashboard-panel {
+    padding: 19px;
+    border-radius: 15px;
+  }
+
+  .dashboard-panels {
+    gap: 16px;
+  }
+
+  .chart-area {
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Restore the Logout button styling */
+.dashboard-header > button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 12px 22px;
+  border: 1px solid #16a34a !important;
+  border-radius: 12px !important;
+  background: #16a34a !important;
+  color: #ffffff !important;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(22, 163, 74, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dashboard-header > button:hover {
+  background: #15803d !important;
+  border-color: #15803d !important;
+  transform: translateY(-1px);
+}
+
+.dashboard-header > button:focus-visible {
+  outline: 3px solid rgba(22, 163, 74, 0.3);
+  outline-offset: 3px;
+}
+
+/* Keep header items in the correct positions */
+.dashboard-header {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+/* Push Home / Dashboard navigation to the right */
+.dashboard-header .dashboard-back {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  position: static !important;
+  transform: none !important;
+}
+
+/* Keep Logout next to Home, not at the far edge */
+.dashboard-header > button {
+  margin-left: 12px !important;
+  flex-shrink: 0;
+}
